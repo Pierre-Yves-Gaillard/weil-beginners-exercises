@@ -1,0 +1,77 @@
+% weil-ex-3dot5-3dot6-aa
+% https://docs.google.com/document/d/1Qtd_Vy4WbD0J9g-yIqIfaV5_abue4tQNFpUe7RxEP20/edit?tab=t.0
+% !TEX encoding = UTF-8 Unicode
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb,amsmath,amsthm} 
+\usepackage[letterpaper,top=40pt,left=50pt,right=50pt,bottom=60pt]{geometry} % print
+% scribe https://docs.google.com/document/d/1DJcZrjPx_dnQfeFpTTFppo3rdrFN6FbktpK75whE2zQ/edit?tab=t.0
+%\usepackage[letterpaper,total={155mm,207mm},centering]{geometry} % SMALL1 scribe real size
+%\usepackage[letterpaper,total={139mm,186mm},centering]{geometry} % SMALL2 scribe
+%\usepackage[letterpaper,total={124mm,166mm},centering]{geometry} % SMALL3 scribe last used
+%\usepackage[letterpaper,total={109mm,145mm},centering]{geometry} % SMALL4 scribe 
+%\usepackage[letterpaper,total={101mm,135mm},centering]{geometry} % SMALL5 scribe 
+\usepackage{microtype}
+%\usepackage{tikz-cd}\usepackage{varwidth}
+%\usepackage{comment}
+\usepackage[pdfusetitle]{hyperref}
+%\usepackage{marvosym}% emoji https://tex.stackexchange.com/questions/3695/smileys-in-latex https://ctan.org/pkg/marvosym?lang=en
+\usepackage{biblatex} 
+\addbibresource{my-bib-file-a.bib} 
+%\pagestyle{empty}
+%\setlength\parindent{0pt}
+\setlength{\parskip}{3pt} % variable
+%\renewcommand{\baselinestretch}{1.1} % variable
+%\newcommand{\noi}{\noindent}
+\newtheorem{thm}{Theorem}%[section] \newtheorem{cor}[thm]{Corollary}
+%\newtheorem{lem}[thm]{Lemma} %\newtheorem{remark}[thm]{Remark}
+%\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{exo}{Exercise}
+\newtheorem*{lem}{Lemma}
+\title{Two exercises} \author{Pierre-Yves Gaillard} \date{}
+
+\begin{document}% \tiny \scriptsize \footnotesize \small \normalsize \large \Large \LARGE \huge \Huge \Gamma \Delta \Theta \Lambda \Xi \Pi \Sigma \Phi \Psi \Omega https://github.com/Pierre-Yves-Gaillard/weil-beginners-exercises Prop. 2.1
+
+\maketitle %\tableofcontents
+\begin{center}
+{\scriptsize This text is available at \url{https://github.com/Pierre-Yves-Gaillard/weil-beginners-exercises}.}
+\end{center}
+
+This text has been written with Gemini's help. Its purpose is to solve Exercises III.5 and III.6 in Weil's book \cite{weil1979}. Here are the statements (in a slightly rephrased form): 
+
+\begin{exo}[III.5] 
+Let $a$ and $b$ be two relatively prime nonnegative integers and $n$ an integer $\ge ab$. Show that there are nonnegative integers $x,y$ such that $n=ax+by$. 
+\end{exo} 
+
+\begin{exo}[III.6] 
+Let $a_1,\ldots,a_k$ be relatively prime nonnegative integers and $n$ a nonnegative integer. Using Exercise~III.5 and induction on $k$, show that, if $n$ is large enough, then there are nonnegative integers $x_1,\ldots,x_k$ such that $n=a_1x_1+\cdots+a_kx_k$. 
+\end{exo} 
+
+I could have followed Proposition 2.1 in Gallier's text \cite{gallier}, which gives a stronger result with an elementary proof, but I preferred to remain closer to what (I think) Weil had in mind. 
+
+The following Lemma will be useful to solve the two exercises. 
+
+\begin{lem}
+In the setting of Exercise~III.5, let $e,f$ be nonnegative integers. If $n\ge ab+ae+bf$, then there are integers $x,y$ such that $n=ax+by,x\ge e,y\ge f$. 
+\end{lem}
+
+\begin{proof} 
+Let $n$ satisfy $n\ge ab+ae+bf$. Since $a$ and $b$ are relatively prime, there are integers $u,v$ such that $n=au+bv$, and any integer solution $(x,y)$ to the equation $n=ax+by$ is equal to $(u,v)+k(b,-a)$ for some integer $k$. This gives $x=u+kb,y=v-ka$. It is enough to show that there is an integer solution $k$ to the inequalities $u+kb\ge e,v-ka\ge g$. This can be rewritten as 
+$$
+\frac{e-u}b\le k\le\frac{v-f}a\ .
+$$ 
+A sufficient condition for the existence of such an integer $k$ is 
+$$
+\frac{v-f}a-\frac{e-u}b\ge1.
+$$ 
+This condition is satisfied because we have 
+$$
+\frac{v-f}a-\frac{e-u}b=\frac{au+bv-(ae+bf)}{ab}=\frac{n-(ae+bf)}{ab}\ge\frac{ab}{ab}=1.
+$$ 
+\end{proof} 
+
+Exercise~III.5 is solved by setting $e=f=0$ and the Lemma. We now solve Exercise~III.6 by induction on $k$. We can assume that $k\ge3$ and that the result holds for $k-1$. Let $d$ be the gcd of $a_1,\ldots,a_{k-1}$. In particular $d$ and $a_k$ are relatively prime. The induction hypothesis is that there is a positive $n_0$ such that $u\ge n_0$ implies the existence of nonnegative integers $x_1,\ldots,x_{k-1}$ such that $du=a_1x_1+\cdots+a_{k-1}x_{k-1}$. Let $n$ be $\ge da_k+dn_0$. By the Lemma, there are integers $u,x_k$ such that $n=du+a_kx_k,u\ge n_0,x_k\ge0$, and, by the induction assumption, there are nonnegative integers $x_1,\ldots,x_{k-1}$ such that $du=a_1x_1+\cdots+a_{k-1}x_{k-1}$. This yields $n=a_1x_1+\cdots+a_kx_k$ with $a_1,\ldots,a_k\ge0$, as required. 
+
+\printbibliography
+
+\end{document}
