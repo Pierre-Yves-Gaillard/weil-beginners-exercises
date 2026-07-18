@@ -1,0 +1,103 @@
+% weil-ex-3dot5-3dot6-af
+% https://docs.google.com/document/d/1X1Fs5fXap1ep--8oY8d5GURvwkmF9FUHmdc4uzJ_e5k/edit?tab=t.0
+% !TEX encoding = UTF-8 Unicode
+% https://chat.qwen.ai/c/14c81fcb-c09f-47e2-b67f-3167a69bbbad. Version ad OK. In the version ae I'll try to simplify the wording of the last proof. Version ac is OK. In the version ad I'll try to make Gallier's bound more transparent.
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb,amsmath,amsthm} 
+\usepackage[letterpaper,top=50pt,left=60pt,right=60pt,bottom=70pt]{geometry} % print
+% scribe https://docs.google.com/document/d/1DJcZrjPx_dnQfeFpTTFppo3rdrFN6FbktpK75whE2zQ/edit?tab=t.0
+%\usepackage[letterpaper,total={155mm,207mm},centering]{geometry} % SMALL1 scribe real size
+%\usepackage[letterpaper,total={139mm,186mm},centering]{geometry} % SMALL2 scribe
+%\usepackage[letterpaper,total={124mm,166mm},centering]{geometry} % SMALL3 scribe last used
+%\usepackage[letterpaper,total={109mm,145mm},centering]{geometry} % SMALL4 scribe 
+%\usepackage[letterpaper,total={101mm,135mm},centering]{geometry} % SMALL5 scribe 
+\usepackage{microtype}
+%\usepackage{tikz-cd}\usepackage{varwidth}
+%\usepackage{comment}
+\usepackage[pdfusetitle]{hyperref}
+%\usepackage{marvosym}% emoji https://tex.stackexchange.com/questions/3695/smileys-in-latex https://ctan.org/pkg/marvosym?lang=en
+\usepackage{biblatex} 
+\addbibresource{global-bib-file-a.bib} 
+%\pagestyle{empty}
+%\setlength\parindent{0pt}
+\setlength{\parskip}{5pt} % variable
+%\renewcommand{\baselinestretch}{1.1} % variable
+%\newcommand{\noi}{\noindent}
+\newtheorem{thm}{Theorem}%[section] \newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma} %\newtheorem{remark}[thm]{Remark}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{exo}[thm]{Exercise}
+\title{Two exercises} \author{Pierre-Yves Gaillard} \date{}
+
+\begin{document}% \tiny \scriptsize \footnotesize \small \normalsize \large \Large \LARGE \huge \Huge \Gamma \Delta \Theta \Lambda \Xi \Pi \Sigma \Phi \Psi \Omega https://github.com/Pierre-Yves-Gaillard/weil-beginners-exercises Prop. 2.1
+
+\maketitle %\tableofcontents
+\begin{center}
+{\scriptsize This text is available at \url{https://github.com/Pierre-Yves-Gaillard/weil-beginners-exercises}.}
+\end{center}
+
+This text has been written with help of Gemini and Qwen. Its purpose is to solve Exercises III.5 and III.6 in Weil's book~\cite{weil1979}. Here are the statements (in a slightly rephrased form): 
+
+\begin{exo}[Exercise III.5 in~\cite{weil1979}] 
+Let $a$ and $b$ be two relatively prime positive integers and $n$ an integer $\ge ab$. Show that there are nonnegative integers $x,y$ such that $n=ax+by$. 
+\end{exo} 
+
+\begin{exo}[Exercise III.6 in~\cite{weil1979}] 
+Let $a_1,\ldots,a_k$ be relatively prime positive integers and $n$ a positive integer. Using Exercise~III.5 and induction on $k$, show that, if $n$ is large enough, then there are nonnegative integers $x_1,\ldots,x_k$ such that $n=a_1x_1+\cdots+a_kx_k$. 
+\end{exo} 
+
+After solving Weil's exercises, we prove Proposition 2.1 in Gallier's text~\cite{gallier}, which gives a stronger result. 
+
+The following lemma will be useful to solve the two exercises. 
+
+\begin{lem}\label{L3}
+In the setting of Exercise~III.5, let $e,f$ be nonnegative integers. If $n\ge ab+ae+bf$, then there are integers $x,y$ such that $n=ax+by,x\ge e,y\ge f$. 
+\end{lem}
+
+\begin{proof} 
+Let $n\ge ab+ae+bf$. Since $a$ and $b$ are relatively prime, there are integers $u,v$ such that $n=au+bv$, and any integer solution $(x,y)$ to the equation $n=ax+by$ is of the form $(u+kb,v-ka)$ for some integer $k$. This gives $x=u+kb,y=v-ka$. It is enough to show that there is an integer solution $k$ to the inequalities $u+kb\ge e,v-ka\ge f$. This can be rewritten as 
+$$
+\frac{e-u}{b}\le k\le\frac{v-f}{a}.
+$$ 
+A sufficient condition for the existence of such an integer $k$ is 
+$$
+\frac{v-f}{a}-\frac{e-u}{b}\ge1.
+$$ 
+This condition is satisfied because we have 
+$$
+\frac{v-f}{a}-\frac{e-u}{b}=\frac{au+bv-(ae+bf)}{ab}=\frac{n-(ae+bf)}{ab}\ge\frac{ab}{ab}=1.
+$$ 
+\end{proof} 
+
+Exercise~III.5 is solved by setting $e=f=0$ in Lemma~\ref{L3}. We now solve Exercise~III.6 by induction on $k$. We may assume that $k\ge3$ and that the result holds for $k-1$. Let $d$ be the gcd of $a_1,\ldots,a_{k-1}$. In particular, $d$ and $a_k$ are relatively prime. Let $a_i' = a_i/d$ for $1 \le i \le k-1$. The integers $a_1', \ldots, a_{k-1}'$ are relatively prime. By the induction hypothesis, there is a positive integer $n_0$ such that any integer $u \ge n_0$ can be written as $u = a_1' x_1 + \cdots + a_{k-1}' x_{k-1}$ for some nonnegative integers $x_1,\ldots,x_{k-1}$. Multiplying by $d$, this implies that $du = a_1 x_1 + \cdots + a_{k-1} x_{k-1}$. Let $n \ge da_k+dn_0$. By Lemma~\ref{L3} applied to the relatively prime integers $d$ and $a_k$, there are integers $u,x_k$ such that $n=du+a_kx_k$, $u\ge n_0$, $x_k\ge0$. By the induction hypothesis, there are nonnegative integers $x_1,\ldots,x_{k-1}$ such that $du=a_1x_1+\cdots+a_{k-1}x_{k-1}$. This yields $n=a_1x_1+\cdots+a_kx_k$ with $x_1,\ldots,x_k\ge0$, as required. 
+
+We now prove Proposition 2.1 in Gallier's text~\cite{gallier}. 
+
+\begin{prop}~\label{PG}
+Let $a_1,\ldots,a_k$ be relatively prime positive integers with $a_1\le a_i$ for all $i$, and $n$ an integer $\ge n_0=(a_1-1)(a_2+\cdots+a_k-1)$. Then there are nonnegative integers $x_1,\ldots,x_k$ such that $n=a_1x_1+\cdots+a_kx_k$.
+\end{prop} 
+
+\begin{lem}\label{L5}
+Let $a_1,\ldots,a_k$ be relatively prime positive integers and $n$ an arbitrary integer. Then there are integers $x_1,\ldots,x_k$ such that $n=a_1x_1+\cdots+a_kx_k$ and $0\le x_i<a_1$ for $i\ge2$.  
+\end{lem} 
+
+\begin{proof}
+There are integers $y_1,\ldots,y_k$ such that $n=a_1y_1+\cdots+a_ky_k$. Writing $\overline{u}$ for the congruence class mod~$a_1$ of the integer $u$, we get $\overline{n}=\overline{a_2}\,\overline{y_2}+\cdots+\overline{a_k}\,\overline{y_k}$. For $i\ge2$ let $x_i\in\mathbb Z$ satisfy $\overline{x_i}=\overline{y_i}$ and $0\le x_i<a_1$. Since $\overline{x_i} = \overline{y_i}$ for $i \ge 2$, we have $\overline{n} = \overline{a_2}\,\overline{x_2}+\cdots+\overline{a_k}\,\overline{x_k}$, which means that $n - a_2x_2 - \cdots - a_kx_k$ is a multiple of $a_1$. Therefore, there is an integer $x_1$ such that $n - a_2x_2 - \cdots - a_kx_k = a_1x_1$, and the integers $x_1,\ldots,x_k$ do the job.
+\end{proof} 
+
+\begin{proof}[Proof of Proposition~\ref{PG}]
+Let $n$ and $x_1,\ldots,x_k$ be as in Lemma~\ref{L5}. Since $x_2,\ldots,x_k$ are nonnegative, it is enough to show $x_1\ge0$ if $n\ge n_0$ (where $n_0$ is as in the statement of the proposition). We have 
+\[
+n = a_1x_1 + \sum_{i=2}^k a_ix_i \le a_1x_1 + \sum_{i=2}^k a_i(a_1-1) = a_1x_1 + m,
+\]
+with $m=(a_1-1)(a_2+\cdots+a_k)$, hence $x_1\ge(n-m)/a_1$, and we see that $(n-m)/a_1>-1$ implies $x_1\ge0$. We have
+\[
+\frac{n-m}{a_1}>-1\Leftrightarrow n>m-a_1\Leftrightarrow n\ge m-a_1+1=n_0,
+\]
+so $n\ge n_0$ implies $x_1\ge0$, as required.
+\end{proof} 
+
+\printbibliography
+
+\end{document}
