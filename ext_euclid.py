@@ -1,3 +1,4 @@
+# Claude
 #!/usr/bin/env python3
 """
 Generate a LaTeX table summarizing the extended Euclidean algorithm
